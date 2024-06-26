@@ -155,16 +155,20 @@ body {
   top: 30%;
   transform: translateX(-50%);
   height: 10rem;
-  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2rem 5rem #00000033;
 }
 
 .player--winner {
-  background-color: #2f2f2f;
+  background-color: #620562;
 }
 
 .player--winner .name {
   font-weight: 700;
-  color: #a21992;
+  color: #00000033;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Media Queries */
