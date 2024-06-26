@@ -3,12 +3,11 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
-  box-sizing: border-box;
 }
 
 body {
@@ -23,22 +22,22 @@ body {
 }
 
 /* LAYOUT */
-main {
+.main {
   position: relative;
-  width: 100rem;
-  height: 60rem;
+  width: 90vw;
+  height: 80vh;
   background-color: rgba(219, 111, 238, 0.35);
   backdrop-filter: blur(200px);
-  filter: blur();
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
   border-radius: 9px;
   overflow: hidden;
   display: flex;
+  flex-direction: row;
 }
 
 .player {
-  flex: 50%;
-  padding: 9rem;
+  flex: 1;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,7 +47,7 @@ main {
 /* ELEMENTS */
 .name {
   position: relative;
-  font-size: 4rem;
+  font-size: 3rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   word-spacing: 2px;
@@ -57,7 +56,7 @@ main {
 }
 
 .score {
-  font-size: 8rem;
+  font-size: 5rem;
   font-weight: 300;
   color: #a21992;
   margin-bottom: auto;
@@ -66,9 +65,11 @@ main {
 .player--active {
   background-color: rgba(255, 255, 255, 0.4);
 }
+
 .player--active .name {
   font-weight: 700;
 }
+
 .player--active .score {
   font-weight: 400;
 }
@@ -82,8 +83,8 @@ main {
   opacity: 0.8;
   border-radius: 9px;
   color: #fff;
-  width: 65%;
-  padding: 2rem;
+  width: 80%;
+  padding: 1rem;
   text-align: center;
   transition: all 0.75s;
 }
@@ -91,12 +92,12 @@ main {
 .current-label {
   text-transform: uppercase;
   margin-bottom: 1rem;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   color: #ddd;
 }
 
 .current-score {
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 /* ABSOLUTE POSITIONED ELEMENTS */
@@ -108,35 +109,35 @@ main {
   background: none;
   border: none;
   font-family: inherit;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 400;
   transition: all 0.2s;
-
   background-color: white;
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
-
-  padding: 0.7rem 2.5rem;
+  padding: 0.5rem 2rem;
   border-radius: 50rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
 }
 
 .btn::first-letter {
-  font-size: 2.4rem;
+  font-size: 2rem;
   display: inline-block;
-  margin-right: 0.7rem;
+  margin-right: 0.5rem;
 }
 
 .btn--new {
-  top: 4rem;
+  top: 1rem;
 }
+
 .btn--roll {
-  top: 39.3rem;
+  top: 55%;
 }
+
 .btn--hold {
-  top: 46.1rem;
+  top: 65%;
 }
 
 .btn:active {
@@ -151,7 +152,7 @@ main {
 .dice {
   position: absolute;
   left: 50%;
-  top: 16.5rem;
+  top: 30%;
   transform: translateX(-50%);
   height: 10rem;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
@@ -164,4 +165,126 @@ main {
 .player--winner .name {
   font-weight: 700;
   color: #a21992;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .main {
+    width: 85vw;
+    height: 75vh;
+  }
+
+  .player {
+    padding: 1.5rem;
+  }
+
+  .btn--roll {
+    top: 50%;
+  }
+
+  .btn--hold {
+    top: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+
+  .main {
+    width: 80vw;
+    height: 70vh;
+    flex-direction: column;
+  }
+
+  .player {
+    padding: 1rem;
+  }
+
+  .name {
+    font-size: 2.5rem;
+  }
+
+  .score {
+    font-size: 4rem;
+  }
+
+  .current {
+    width: 90%;
+  }
+
+  .current-label {
+    font-size: 1.3rem;
+  }
+
+  .current-score {
+    font-size: 1.8rem;
+  }
+
+  .btn--roll {
+    top: 55%;
+  }
+
+  .btn--hold {
+    top: 65%;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 45%;
+  }
+
+  .main {
+    width: 90vw;
+    height: 90vh;
+  }
+
+  .player {
+    padding: 1rem;
+  }
+
+  .name {
+    font-size: 1.5rem; /* Smaller text for mobile */
+  }
+
+  .score {
+    font-size: 3rem;
+  }
+
+  .current {
+    width: 95%;
+  }
+
+  .current-label {
+    font-size: 1.2rem;
+  }
+
+  .current-score {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .btn--new,
+  .btn--roll,
+  .btn--hold {
+    position: static; /* Remove absolute positioning for mobile */
+    transform: none; /* Remove transform */
+    margin: 1rem; /* Add margin for spacing */
+  }
+
+  .btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dice {
+    height: 8rem;
+  }
 }
